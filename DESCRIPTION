@@ -1,0 +1,25 @@
+Package: rarable
+Title: R client for the arable API
+Version: 0.1.0
+Authors@R: 
+    c(
+      person(given = "Eduard", family = "Szöcs",   email = "eduard.szoecs@basf.com", 
+        role = c("aut", "cre")),
+      person("BASF SE", role = "cph"))
+Description: R client for the arable API <https://api.arable.cloud/api/v2/doc>. 
+  Provides access and functions to parse results into nice data.frames.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    httr,
+    jsonlite,
+    lubridate,
+    magrittr,
+    purrr,
+    R6
+Suggests: 
+    testthat (>= 3.0.0),
+    dplyr
+Config/testthat/edition: 3
