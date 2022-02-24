@@ -1,5 +1,5 @@
 Package: rarable
-Title: R client for the arable API
+Title: R Client for the Arable API
 Version: 0.1.0
 Authors@R: 
     c(
