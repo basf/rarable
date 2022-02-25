@@ -18,7 +18,13 @@ Provides access and functions to parse results into nice data.frames.
 
 ## Installation
 
-You can install the development version of `rarable` using [`remotes::install_git`](https://remotes.r-lib.org/reference/install_git.html).
+You can install the development version of `rarable` using the [`remotes`](https://remotes.r-lib.org) package.
+
+
+```r
+remotes::install_github("basf/rarable")
+```
+
 
 ## Usage
 
