@@ -16,8 +16,8 @@
 #' @param local_time character; local time
 #' @param select character vector; columns to select, see [ar_schema()]
 #'   for options of a table
-#' @param start_time datetime in POSIXct class
-#' @param end_time datetime in POSIXct class
+#' @param start_time character; start formatted as "%Y-%m-%dT%H:%M:%SZ"
+#' @param end_time character; end formatted as "%Y-%m-%dT%H:%M:%SZ"
 #' @param verbose logical; verbose messages on API calls
 #' @param recurse logical; should the function recurse until
 #'   all data is fetched?
@@ -32,8 +32,8 @@
 #'     limit = 50L,
 #'     device = "C007538",
 #'     select = c("time", "mean_rh"),
-#'     start_time = Sys.time() - 60*60*24*30*12,
-#'     end_time = Sys.time(),
+#'     start_time = format(Sys.time() - 60*60*24*30*12, "%Y-%m-%dT%H:%M:%SZ"),
+#'     end_time = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ"),
 #'     verbose = TRUE)
 #' }
 ar_data <- function(ar,
@@ -66,17 +66,6 @@ ar_data <- function(ar,
   stopifnot(is.integer(limit))
   stopifnot(1L <= limit & limit <= 10000L)
 
-  start_time_f <- NULL
-  if (!is.null(start_time)) {
-    stopifnot(lubridate::is.POSIXct(start_time))
-    start_time_f <- format(start_time, "%Y-%m-%dT%H:%M:%SZ")
-  }
-  end_time_f <- NULL
-  if (!is.null(end_time)) {
-    stopifnot(lubridate::is.POSIXct(end_time))
-    end_time_f <- format(end_time, "%Y-%m-%dT%H:%M:%SZ")
-  }
-
   order <- match.arg(order)
   temp <- match.arg(temp)
   pres <- match.arg(pres)
@@ -105,8 +94,8 @@ ar_data <- function(ar,
     device = device,
     location = location,
     select = select,
-    start_time = start_time_f,
-    end_time = end_time_f,
+    start_time = start_time,
+    end_time = end_time,
     local_time = local_time) %>%
     purrr::compact()
 

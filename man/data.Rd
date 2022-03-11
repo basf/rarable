@@ -64,9 +64,9 @@ ar_parse_data(x)
 \item{select}{character vector; columns to select, see \code{\link[=ar_schema]{ar_schema()}}
 for options of a table}
 
-\item{start_time}{datetime in POSIXct class}
+\item{start_time}{character; start formatted as "\%Y-\%m-\%dT\%H:\%M:\%SZ"}
 
-\item{end_time}{datetime in POSIXct class}
+\item{end_time}{character; end formatted as "\%Y-\%m-\%dT\%H:\%M:\%SZ"}
 
 \item{verbose}{logical; verbose messages on API calls}
 
@@ -89,8 +89,8 @@ ar_data(ar,
     limit = 50L,
     device = "C007538",
     select = c("time", "mean_rh"),
-    start_time = Sys.time() - 60*60*24*30*12,
-    end_time = Sys.time(),
+    start_time = format(Sys.time() - 60*60*24*30*12, "\%Y-\%m-\%dT\%H:\%M:\%SZ"),
+    end_time = format(Sys.time(), "\%Y-\%m-\%dT\%H:\%M:\%SZ"),
     verbose = TRUE)
 }
 }
