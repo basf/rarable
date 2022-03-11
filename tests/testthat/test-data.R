@@ -10,8 +10,9 @@ d <- ar_data(ar,
              limit = 50L,
              device = "C007538",
              select = c("time", "mean_rh"),
-             start_time = Sys.time() - 60*60*24*30*12,
-             end_time = Sys.time())
+             start_time = format(Sys.time() - 60*60*24*30*12, "%Y-%m-%dT%H:%M:%SZ"),
+             end_time = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ")
+             )
 
 testthat::test_that("ar_data works", {
   expect_s3_class(d, "ar_data")
@@ -31,8 +32,8 @@ d2 <- ar_data(ar,
              limit = 50L,
              device = "C007538",
              select = c("time", "mean_rh"),
-             start_time = Sys.time() - 60*60*24*30*12,
-             end_time = Sys.time(),
+             start_time = format(Sys.time() - 60*60*24*30*12, "%Y-%m-%dT%H:%M:%SZ"),
+             end_time = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ"),
              local_time = "America/Regina"
              ) %>% ar_parse_data()
 
